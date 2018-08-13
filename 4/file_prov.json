@@ -1,14 +1,17 @@
 {
   "variables": {
-    "aws_access_key": "",
-    "aws_secret_key": ""
+    "aws_access_key": "{{env `AWS_ACCESS_KEY`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_KEY`}}"
   },
   "builders": [{
     "type": "amazon-ebs",
+    "vpc_id": "vpc-df38d8a5",
+    "associate_public_ip_address": true,
+    "subnet_id": "subnet-47dc071b",
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
-    "source_ami": "ami-a025aeb6",
+    "source_ami": "ami-5c150e23",
     "instance_type": "t2.micro",
     "ssh_username": "ubuntu",
     "ami_name": "file-prov {{timestamp | clean_ami_name}}"
